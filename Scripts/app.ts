@@ -3,7 +3,7 @@
   "use strict";
 
   // YOUR CODE GOES HERE
-  
+
   /**
    *This function loads the content from the TXT into the P elements in ARTICLE elements.
    *
@@ -12,7 +12,7 @@
     let IslandsList = document.querySelectorAll("article>p");
 
     for (const islands of IslandsList) {
-      console.log(islands.id);
+      //   console.log(islands.id);
       switch (islands.id) {
         case "IntroParagraph":
           islands.innerHTML = `Now is the time to travel to Greece. The country may be going through an economic crisis, but many travellers say that it hasn't impacted the experience of visiting. Plus, there may be some great deals.<br />Greece has 1,400 islands, though only 230 of them are inhabited.<br />And while everyone knows about Santorini and Mykonos, there are gorgeous lesser-known islands in Greece, too.`;
@@ -46,6 +46,71 @@
       }
     }
   }
+  let button = document.getElementById("sendButton");
+  console.log(button);
+
+  const addContact = (event) => {
+    event.preventDefault();
+    let contacts: string[] = [];
+    const firstName = document.getElementById("firstName") as HTMLInputElement;
+    const lastName = document.getElementById("lastName") as HTMLInputElement;
+    const contactNumber = document.getElementById(
+      "contactNumber"
+    ) as HTMLInputElement;
+    const email = document.getElementById("email") as HTMLInputElement;
+    const yourMessage = document.getElementById(
+      "yourMessage"
+    ) as HTMLInputElement;
+    // let firstName = document.getElementById("firstName")[0];
+    //let lastName = document.getElementById("lastName")[0];
+    //let contactNumber = document.getElementById("contactNumber")[0];
+    //let email = document.getElementById("email")[0];
+    //let yourMessage = document.getElementById("yourMessage")[0];
+    console.info(firstName);
+    let contact: any = {
+      firstName: firstName?.value,
+      lastName: lastName?.value,
+      contactNumber: contactNumber?.value,
+      email: email?.value,
+      yourMessage: yourMessage?.value,
+    };
+    contacts.push(contact);
+    document.forms[0].reset();
+    console.log(`added`, { contacts });
+    let newContact = JSON.stringify(contacts);
+    console.log(newContact);
+    /* 
+     [{"firstName":"Xinyu",
+    "lastName":"Zhu",
+    "contactNumber":"07053052814",
+    "email":"200496119@student.georgianc.on.ca",
+    "yourMessage":"123"}]
+     */
+    let contactOutputList = newContact.split(",");
+    console.log(contactOutputList);
+    let outputName =
+      contactOutputList[0].slice(15, contactOutputList[0].length - 1) +
+      " " +
+      contactOutputList[1].slice(12, contactOutputList[1].length - 1);
+    let outputNumber = contactOutputList[2].slice(
+      17,
+      contactOutputList[2].length - 1
+    );
+    let outputEmail = contactOutputList[3].slice(
+      9,
+      contactOutputList[3].length - 1
+    );
+    let outputMessage = contactOutputList[4].slice(
+      15,
+      contactOutputList[4].length - 3
+    );
+
+    console.info(outputName);
+    console.info(outputNumber);
+    console.info(outputEmail);
+    console.info(outputMessage);
+  };
+  button.addEventListener("click", addContact);
 
   function Start() {
     console.log("App started!");

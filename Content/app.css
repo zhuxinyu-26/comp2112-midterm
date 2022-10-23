@@ -1,3 +1,7 @@
+/* The File name: COMP2112-Mid-Term-200496119
+   Author's name: Xinyu Zhu
+   web site name: The Travel Report
+   file description: the css page of the website */
 /* custom syle sheet */
 
 .navbar {
@@ -20,4 +24,10 @@ article, section {
 
 #contactForm {
     margin-bottom: 4em;
+}
+
+.profileimg{
+    width: 200px;
+    margin: auto;
+    /* height: 100px; */
 }
