@@ -1,3 +1,7 @@
+/* The File name: COMP2112-Mid-Term-200496119
+     Author's name: Xinyu Zhu
+     web site name: The Travel Report
+     file description: the TypeScript/JavaScript page of the website */
 // setup your IIFE (Immediately Invoked Function Expression)
 (function () {
     "use strict";
@@ -7,9 +11,9 @@
      *
      */
     function LoadContent() {
+        //get all the p in the article sections
         let IslandsList = document.querySelectorAll("article>p");
         for (const islands of IslandsList) {
-            //   console.log(islands.id);
             switch (islands.id) {
                 case "IntroParagraph":
                     islands.innerHTML = `Now is the time to travel to Greece. The country may be going through an economic crisis, but many travellers say that it hasn't impacted the experience of visiting. Plus, there may be some great deals.<br />Greece has 1,400 islands, though only 230 of them are inhabited.<br />And while everyone knows about Santorini and Mykonos, there are gorgeous lesser-known islands in Greece, too.`;
@@ -44,21 +48,22 @@
         }
     }
     let button = document.getElementById("sendButton");
-    console.log(button);
+    /**
+     *This method gets the data from the html form
+     *
+     * @param {*} event
+     */
     const addContact = (event) => {
+        //stop the page from refreshing
         event.preventDefault();
+        //empty array
         let contacts = [];
         const firstName = document.getElementById("firstName");
         const lastName = document.getElementById("lastName");
         const contactNumber = document.getElementById("contactNumber");
         const email = document.getElementById("email");
         const yourMessage = document.getElementById("yourMessage");
-        // let firstName = document.getElementById("firstName")[0];
-        //let lastName = document.getElementById("lastName")[0];
-        //let contactNumber = document.getElementById("contactNumber")[0];
-        //let email = document.getElementById("email")[0];
-        //let yourMessage = document.getElementById("yourMessage")[0];
-        console.info(firstName);
+        //set a new object
         let contact = {
             firstName: firstName?.value,
             lastName: lastName?.value,
@@ -66,31 +71,26 @@
             email: email?.value,
             yourMessage: yourMessage?.value,
         };
+        //add contact to the array
         contacts.push(contact);
+        //empty the form after submit
         document.forms[0].reset();
-        console.log(`added`, { contacts });
         let newContact = JSON.stringify(contacts);
-        console.log(newContact);
-        /*
-         [{"firstName":"Xinyu",
-        "lastName":"Zhu",
-        "contactNumber":"07053052814",
-        "email":"200496119@student.georgianc.on.ca",
-        "yourMessage":"123"}]
-         */
         let contactOutputList = newContact.split(",");
-        console.log(contactOutputList);
-        let outputName = "Full Name: " +
+        let outputDetails = "Full Name: " +
             contactOutputList[0].slice(15, contactOutputList[0].length - 1) +
             " " +
-            contactOutputList[1].slice(12, contactOutputList[1].length - 1);
-        let outputNumber = "Contact Number: " + contactOutputList[2].slice(17, contactOutputList[2].length - 1);
-        let outputEmail = "Email: " + contactOutputList[3].slice(9, contactOutputList[3].length - 1);
-        let outputMessage = "Message: " + contactOutputList[4].slice(15, contactOutputList[4].length - 3);
-        console.info(outputName);
-        console.info(outputNumber);
-        console.info(outputEmail);
-        console.info(outputMessage);
+            contactOutputList[1].slice(12, contactOutputList[1].length - 1) +
+            "\n" +
+            "Contact Number: " +
+            contactOutputList[2].slice(17, contactOutputList[2].length - 1) +
+            "\n" +
+            "Email: " +
+            contactOutputList[3].slice(9, contactOutputList[3].length - 1) +
+            "\n" +
+            "Message: " +
+            contactOutputList[4].slice(15, contactOutputList[4].length - 3);
+        console.info(outputDetails);
     };
     button.addEventListener("click", addContact);
     function Start() {
