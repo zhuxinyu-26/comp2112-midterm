@@ -80,12 +80,13 @@
          */
         let contactOutputList = newContact.split(",");
         console.log(contactOutputList);
-        let outputName = contactOutputList[0].slice(15, contactOutputList[0].length - 1) +
+        let outputName = "Full Name: " +
+            contactOutputList[0].slice(15, contactOutputList[0].length - 1) +
             " " +
             contactOutputList[1].slice(12, contactOutputList[1].length - 1);
-        let outputNumber = contactOutputList[2].slice(17, contactOutputList[2].length - 1);
-        let outputEmail = contactOutputList[3].slice(9, contactOutputList[3].length - 1);
-        let outputMessage = contactOutputList[4].slice(15, contactOutputList[4].length - 3);
+        let outputNumber = "Contact Number: " + contactOutputList[2].slice(17, contactOutputList[2].length - 1);
+        let outputEmail = "Email: " + contactOutputList[3].slice(9, contactOutputList[3].length - 1);
+        let outputMessage = "Message: " + contactOutputList[4].slice(15, contactOutputList[4].length - 3);
         console.info(outputName);
         console.info(outputNumber);
         console.info(outputEmail);
