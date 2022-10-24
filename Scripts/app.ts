@@ -52,7 +52,7 @@
     }
   }
   let button = document.getElementById("sendButton");
-  
+
 /**
  *This method gets the data from the html form
  *
@@ -109,6 +109,15 @@ const addContact = (event) => {
   function Start() {
     console.log("App started!");
     LoadContent();
+    window.scrollTo(0, 1000);
+    window.scroll({
+      top: 1000,
+      behavior: "smooth"
+    });
+    window.scrollBy({
+      top: -100,
+      behavior: "smooth"
+    });
   }
 
   window.addEventListener("load", Start);
